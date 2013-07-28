@@ -1,0 +1,90 @@
+﻿@{ 
+	Layout = "Public.cshtml";
+	Model.HtmlTitle = "Avancement du projet";
+}
+
+<div id="progression-page" style="padding: 30px;">
+
+	<h1 class="progression-title" style="margin-bottom: 10px;">Progression de la phase 1</h1>
+	
+	<ul class="progress-list">
+		<li><h4>Développement</h4>
+			<input class="knob" value="20" data-width="150" data-fgcolor="#18a700" data-thickness=".3" data-readOnly="true" />
+		</li>
+		<li><h4>Sécurité</h4>
+			<input class="knob" value="95" data-width="150" data-fgcolor="#18a700" data-thickness=".3" data-readOnly="true" />
+		</li>
+		<li><h4>Base de données</h4>
+			<input class="knob" value="30" data-width="150" data-fgcolor="#18a700" data-thickness=".3" data-readOnly="true" />
+		</li>
+		<li><h4>Interface Utilisateur</h4>
+			<input class="knob" value="50" data-width="150" data-fgcolor="#18a700" data-thickness=".3" data-readOnly="true" />
+		</li>
+		<li><h4>Test</h4>
+			<input class="knob" value="5" data-width="150" data-fgcolor="#18a700" data-thickness=".3" data-readOnly="true" />
+		</li>
+	</ul>
+	
+	<div style="clear: both;">
+		@foreach(var item in Model.ProgressSteps) {
+		<div class="hasPopOver" data-title="@item.Title" data-content="@item.Description" data-href="#" style="background: #eee; border: solid 1px #ccc; border-radius: 8px; padding: 0 20px; margin: 10px 0 10px 0;">
+			<h3 style="text-align: center;">@item.Title</h3>
+			<div class="progressbar" data-perc="@item.CurrentProgress">
+				<div class="bar"><span></span></div>
+				<div class="label"><span></span></div>
+			</div>
+			
+			<br/>
+			
+			@foreach(var subitem in item.Items) {
+			<div class="hasPopOver" data-title="@subitem.Title" data-content="@subitem.Description" data-href="#" style="background: #eee; padding: 0 20px; margin: 10px 0 20px 0; overflow: visible;">
+				<h4 style="display: inline-block; height: 40px; line-height: 40px;">&bull; @subitem.Title</h4>
+				<div class="progressbar small" data-perc="@subitem.CurrentProgress">
+					<div class="bar"><span></span></div>
+					<!--<div class="label"><span></span></div>-->
+				</div>
+			</div>
+			}
+			
+		</div>
+		}
+	</div>
+</div>
+
+@section Footer {
+	$(function() {
+	    $(".knob").knob();
+	});
+	
+	$('.hasPopOver').popover({ 
+		container: 'p',
+		placement: 'top', 
+		trigger: 'hover'
+	});
+		
+	$(function() {
+		$('.progressbar').each(function(){
+			var t = $(this),
+				dataperc = t.attr('data-perc'),
+				barperc = Math.round(dataperc*5.56);
+				
+			if(t.hasClass("small")){barperc = Math.round(dataperc*2.78);}
+			
+			t.find('.bar').animate({width:barperc}, dataperc*25);
+			t.find('.label').append('<div class="perc"></div>');
+			
+			function perc() {
+				var length = t.find('.bar').css('width'),
+					perc = Math.round(parseInt(length)/5.56),
+					labelpos = (parseInt(length)-2);
+					
+					if(t.hasClass("small")){perc = Math.round(parseInt(length)/2.78);}
+					
+				t.find('.label').css('left', labelpos);
+				t.find('.perc').text(perc+'%');
+			}
+			perc();
+			setInterval(perc, 0); 
+		});
+	});
+}

@@ -1,0 +1,6 @@
+﻿<div data-bind="invisible: security.isEditing">
+  @Partial['Admin/Security/List.html'];
+</div>
+<div data-bind="visible: security.isEditing">
+  @Partial['Admin/Security/Edition.html'];
+</div>

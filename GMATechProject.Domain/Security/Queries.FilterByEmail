@@ -1,0 +1,11 @@
+using System;
+namespace ABC.Domain
+{
+	public class Queries
+	{
+		public Queries()
+		{
+		}
+	}
+}
+

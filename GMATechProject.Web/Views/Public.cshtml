@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>@if(!string.IsNullOrEmpty(Model.HtmlTitle)){<text>@Model.HtmlTitle - </text>}QG Informatique</title>
+    @if(!string.IsNullOrEmpty(Model.MetaDescription)) {<meta name="description" content="@Model.MetaDescription" />}
+    @if(!string.IsNullOrEmpty(Model.MetaKeywords)) {<meta name="keywords" content="@Model.MetaKeywords" />}
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!-- And style for IE8 or Older: animation menu doesn't work properly -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <style>
+	 	/* Show dropwdown menu on mouse over */
+		.public ul.nav li.dropdown:hover ul.dropdown-menu{
+  			display: block;
+		}
+	</style>
+    <![endif]-->
+
+    <!-- Le style -->
+	
+	<!-- v.@Model.ClientVersion -->
+	@if(Model.UseConcatenatedResources) {
+	<text>
+	<link href="/Resources/??bootstrap.css,bootstrap-responsive.css,bootstrap-extensions.css,flexslider.css,jquery.fancybox-1.3.4.css,master.css?v=@Model.ClientVersion" rel="stylesheet" />
+	</text>
+	} else {
+	<text>
+	<link href="/Resources/bootstrap.css" rel="stylesheet" />
+    <link href="/Resources/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="/Resources/bootstrap-extensions.css" rel="stylesheet" />
+    <link href="/Resources/flexslider.css" rel="stylesheet" />
+    <link href="/Resources/jquery.fancybox-1.3.4.css" rel="stylesheet" />
+	<link href="/Resources/master.css" rel="stylesheet" />
+	</text>
+	}
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/Resources/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="/Resources/images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/Resources/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/Resources/images/apple-touch-icon-114x114.png" />
+	
+	@RenderSection("Header", false)
+  </head>
+  
+  <body class="public">
+  
+  	<div class="page-bg">
+	
+	<!-- Page -->
+	<div id="page" class="page">
+	
+	<a href="/" id="logo-link" title="QG Informatique - Accueil"><img id="logo" src="/Resources/images/logo-qginformatique.png" width="354" height="106" alt="Logo QG Informatique" /></a>
+	
+	<!-- Navigation Menu -->
+	@Html.Partial("Public/NavigationMenu.cshtml", Model.NavMenu)
+	<!--/Navigation Menu-->
+	
+	<div id="container" class="container-fluid">
+      <div class="row-fluid" style="padding-bottom: 20px;">
+		
+        <div class="span9 column-main">
+
+			<!-- Page Content -->
+			
+			@RenderBody()
+					
+			<!--/Content-->
+
+		</div><!--/span-->
+	  </div>
+
+      <footer>
+      	<div style="clear: both;">
+	        <p>&copy; 2013 QG Informatique</p>
+	      	@foreach(var item in Model.NavMenu.NavSectionsFooter) {
+	      	<text>
+      		<a href="/@item.History" class="@item.Css link pull-right">@item.Label</a>
+      		</text>
+      		}
+        </div>
+      </footer>
+      
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <!-- Load json3.min.js only with IE7 or older (because not natively implemented) to avoid "Cannot find JSON.stringify()" -->
+    <!-- Need to be loaded before knockout.js -->
+    <!--[if lte IE 7]>
+	<script type="text/javascript" src="/Scripts/libs/json3.min.js"></script>
+	<![endif]-->
+
+	@if(Model.UseConcatenatedResources) {
+	<text>
+	<script type="text/javascript" src="/Scripts/libs/??jquery.min.js,jquery.browser.js,date-fr-FR.js,bootstrap.js,knockout.js,knockout-2.mapping.js,jquery.validate.js,jquery.validate.messages_fr.js,jquery.verifyOptions.js,jquery.address.js,jquery.form.js,jquery.timers.js,knockout-2.address.js,knockout-2.editables.js,knockout-postbox.js,jquery-ui.js,jquery.flexslider-min.js,jquery.fancybox-1.3.4.pack.js,jquery.easing.1.3.js,knob.js,custom.fonctions.js,linq.js,jquery.linq.js?v=@Model.ClientVersion"></script>
+    <!-- The following libs must be loaded separately to avoid script error -->
+    <script type="text/javascript" src="/Scripts/libs/moment.min.js"></script>
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+    </text>
+    } else {
+    <text>
+    <script type="text/javascript" src="/Scripts/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.browser.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/date-fr-FR.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/bootstrap.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout-2.mapping.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.validate.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.validate.messages_fr.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.verifyOptions.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.address.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.form.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.timers.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout-2.address.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout-2.editables.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout-postbox.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery-ui.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.fancybox-1.3.4.pack.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.knob.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/moment.min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/custom.fonctions.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/linq.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.linq.js"></script>
+    <script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"></script>
+	</text>
+	}
+
+	@if(Model.UseConcatenatedResources) {
+	<text>
+	<script type="text/javascript" src="/Scripts/application/plumbing/??knockout.bindings.jui.js,knockout.pagination.js,knockout.extensions.js,knockout.bootstrap.js,knockout.bindings.js?v=@Model.ClientVersion"></script>
+	</text>
+	} else {
+	<text>
+	<script type="text/javascript" src="/Scripts/application/plumbing/knockout.bindings.jui.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.pagination.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.extensions.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.bootstrap.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.bindings.js"></script>
+	</text>
+	}
+
+	@if(Model.UseConcatenatedResources) {
+	<text>
+	<script type="text/javascript" src="/Scripts/application/plumbing/??core.class.js,core.model.js"></script>
+	<script type="text/javascript" src="/Scripts/application/public/??articles.js,members.js,authentication.js,search.js,application.js??v=@Model.ClientVersion"></script>
+	</text>
+	} else {
+	<text>
+	<script type="text/javascript" src="/Scripts/application/plumbing/core.class.js"></script>
+	<script type="text/javascript" src="/Scripts/application/plumbing/core.model.js"></script>
+    <script type="text/javascript" src="/Scripts/application/public/articles.js"></script>
+    <script type="text/javascript" src="/Scripts/application/public/members.js"></script>
+    <script type="text/javascript" src="/Scripts/application/public/authentication.js"></script>
+    <script type="text/javascript" src="/Scripts/application/public/search.js"></script>
+	<script type="text/javascript" src="/Scripts/application/public/application.js"></script>
+	</text>
+	}
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($){
+			var options = { navigation: { active: "home" } };
+			
+			@if(Model.RegisterNewUser) {
+			<text>
+				options.identity = { id: "@Model.IdNewUser", mustRegister: true };
+			</text>
+			}
+			
+			var application = new app.ApplicationModel(options);
+						
+			@RenderSection("Footer", false)
+		});
+	</script>
+    
+	</div><!--/Page-->
+	
+	</div><!--/Page-bg-->
+	
+	@Html.Partial("Public/Dialogs/Register.cshtml")
+	
+  </body>
+</html>

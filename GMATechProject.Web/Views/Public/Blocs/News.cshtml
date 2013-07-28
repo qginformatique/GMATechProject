@@ -1,0 +1,22 @@
+﻿<h4 class="subtitle"><a href="/actualites/actualites" style="color: #92bc1c; display: block;">LIRE TOUTES LES ACTUALITÉS<img src="/Resources/images/btn_green.png" style="margin: -5px 0 0 10px;" height="27px" width="27px" /></a></h4>
+
+<div class="row-fluid">
+@for(var i = 0; i < Model.HomeArticles.Count; i++) {
+<text>
+	@if(i == 0 || i == 3) { 
+  	<text><div class="span6"></text>
+  	}
+	<div data-navigation="actualites" class="home-news" data-href="@Model.HomeArticles[@i].FriendlyUrl">
+		<h5>@Model.HomeArticles[@i].Title</h5>
+		<p class="description">@Model.HomeArticles[@i].Description</p>
+		<p style="margin: 0;"><i style="font-family: Arial; font-size: 0.8em;">Publié le @Model.HomeArticles[@i].PublicationDateInFrench</i> <a href="@Model.HomeArticles[@i].FriendlyUrl" style="float: right;">Lire la suite ></a></p>
+		
+	</div>
+	@if(i == 2 || i == 5) {
+	<text></div></text>
+	} else {
+	<hr style="margin: 0;" />
+	}
+</text>
+}
+</div>

@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>QG Informatique - Administration</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Css Librairies -->
+	@If.UseConcatenatedResources;
+	<link href="/Resources/??bootstrap.css,bootstrap-extensions.css,bootstrap-responsive.css,jquery-ui-1.8.16.css,jquery-ui.tagit.css,jquery-ui.wizard.css,jquery-ui.multiselect.css,jquery-ui-extensions.css,jquery.fileupload-ui.css,unicorn.main.css,unicorn.grey.css,imgareaselect-default.css,dropzone.css?v=@Model.ClientVersion" rel="stylesheet">
+	@EndIf;
+	
+	@IfNot.UseConcatenatedResources;	
+    <link href="/Resources/bootstrap.css" rel="stylesheet">
+    <link href="/Resources/bootstrap-extensions.css" rel="stylesheet">
+    <link href="/Resources/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/Resources/jquery-ui-1.8.16.css" rel="stylesheet">
+    <link href="/Resources/jquery-ui.tagit.css" rel="stylesheet">
+    <link href="/Resources/jquery-ui.wizard.css" rel="stylesheet">
+    <link href="/Resources/jquery-ui.multiselect.css" rel="stylesheet">
+    <link href="/Resources/jquery-ui-extensions.css" rel="stylesheet">
+    <link href="/Resources/jquery.fileupload-ui.css" rel="stylesheet">
+    <link href="/Resources/unicorn.main.css" rel="stylesheet">
+    <link href="/Resources/unicorn.grey.css" rel="stylesheet">
+    <link href="/Resources/imgareaselect-default.css" rel="stylesheet">
+    <link href="/Resources/dropzone.css" rel="stylesheet">
+	@EndIf;
+	
+    <!-- Css Application -->
+    <link href="/Resources/application.css" rel="stylesheet">
+
+    <!-- fav and touch icons -->
+    <link rel="shortcut icon" href="/Resources/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/Resources/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Resources/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Resources/images/apple-touch-icon-114x114.png">
+  </head>
+  
+  <body class="admin">
+  
+	<div id="header">
+		<h1><a href="/">QG Informatique Admin</a></h1>		
+	</div>
+	
+	<div id="usefull-nav" class="navbar navbar-inverse">
+        <ul class="nav btn-group" style="width: auto; margin: 0px;">
+			<li class="btn btn-inverse"><a href="/" target="_blank"><img src="/Resources/images/icons/16/earth.png" /> Voir le site</a></li>
+        </ul>
+    </div>
+	
+	<div id="user-nav" class="navbar navbar-inverse">
+        <ul class="nav btn-group" style="width: auto; margin: 0px;">
+        	<li class="btn btn-inverse dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Notifications</span> <span class="label label-important" data-bind="text: notifications().length"></span></b></a>
+        		<ul class="dropdown-menu" data-bind="visible: notifications().length > 0, foreach: notifications">
+                    <li><a data-bind="css: { error: getType == 'error', success: getType == 'success', warning: getType == 'warning', information: getType == 'information' }, text: getMessage" title="" href="#"></a></li>
+                </ul>
+        	</li>
+            <li class="btn btn-inverse dropdown" data-bind="with: identity"><a class="dropdown-toggle" title="" href="#" data-toggle="dropdown"><i class="icon icon-share-alt"></i> <span class="text">Connecté ( <span data-bind="text: email"></span> )</span> <b class="caret"></b></a>
+			    <ul class="dropdown-menu">
+			    	<li><a href="#" class="buttonLogOut">Se déconnecter</a></li>
+			    </ul>
+            </li>
+        </ul>
+    </div>
+        
+    <div id="sidebar">
+		<a href="/admin#home" class="visible-phone"><i class="icon icon-home"></i> Tableau de bord</a>			
+		<ul class="nav" style="display: block;" data-bind="with: navigation">
+			<li data-bind="css: { active: navigationHome }"><a href="#home" navigation-section="Home"><i class="icon icon-home"></i> <span>Tableau de bord</span></a></li>
+			<li data-bind="css: { active: navigationProgress }"><a href="#" navigation-section="Progress"><i class="icon icon-tasks"></i> <span>Progression</span></a></li>
+			<li data-bind="css: { active: navigationArticles }"><a href="#articles" navigation-section="Articles"><i class="icon icon-pencil"></i> <span>Articles</span></a></li>				
+			<li data-bind="css: { active: navigationPages }"><a href="#pages" navigation-section="Pages"><i class="icon icon-file"></i> <span>Pages</span></a></li>				
+			<li data-bind="css: { active: navigationMembers }"><a href="#" navigation-section="Members"><i class="icon icon-user"></i> <span>Adhérents</span></a></li>
+			<li data-bind="css: { active: navigationSecurity }"><a href="#" navigation-section="Security"><i class="icon icon-lock"></i> <span>Securité</span></a></li>
+			<li data-bind="css: { active: navigationRoleTagsBindings }"><a href="#" navigation-section="RoleTagsBindings"><i class="icon icon-tags"></i> <span>Role & Tags</span></a></li>
+		</ul>
+	</div>
+		
+	<div id="content">
+		
+		<div id="container">
+    
+			<!-- Section: Home -->
+			<div id="home" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationHome">
+				@Partial['Admin/Home.sshtml'];
+			</div><!--/row-->
+			
+			<!-- Section: Progression -->
+			<div id="progress" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationProgress">
+				@Partial['Admin/Progress/Main.sshtml'];
+			</div><!--/row-->
+
+			<!-- Section: Articles -->
+			<div id="articles" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationArticles">
+				@Partial['Admin/Articles/Main.sshtml'];
+			</div><!--/row-->
+			
+			<!-- Section: Pages -->
+			<div id="pages" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationPages">
+				@Partial['Admin/Pages/Main.sshtml'];
+			</div><!--/row-->
+
+			<!-- Section: Adhérents -->
+			<div id="members" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationMembers">
+				@Partial['Admin/Members/Main.sshtml'];
+			</div><!--/row-->
+
+			<!-- Section: Securité -->
+			<div id="security" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationSecurity">
+				@Partial['Admin/Security/Main.sshtml'];
+			</div><!--/row-->
+
+			<!-- Section: RoleTagsBindings -->
+			<div id="roleTags" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationRoleTagsBindings">
+				@Partial['Admin/RoleTagsBindings/Main.sshtml'];
+			</div><!--/row-->
+			
+		</div>
+		
+		<div class="row-fluid">
+			<div id="footer" class="span12">
+				&copy; QG Informatique 2013
+			</div>
+		</div>
+	
+	</div>
+    
+    <!-- Javascript libs
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	@If.UseConcatenatedResources;
+	<script src="/Scripts/libs/??jquery.js,jquery-ui.js,jquery-ui-i18n.js,jquery.verifyOptions.js,jquery.address.js,jquery.form.js,jquery.timers.js,bootstrap.min.js,knockout.js,knockout-2.mapping.js,knockout-2.address.js,knockout-2.editables.js,jquery.validate.js,jquery.validate.messages_fr.js,date-fr-FR.js,moment.min.js,custom.fonctions.js,jquery.sprintf.js,jquery-ui.tag-it.js,jquery-ui.wizard.js,jquery-ui.confirm.js,jquery-ui.multiselect.js,tmpl.min.js,load-image.min.js,canvas-to-blob.min.js,jquery.iframe-transport.js,jquery.fileupload.js,excanvas.min.js,jquery.peity.min.js,unicorn.js,unicorn.dashboard.js,jquery.imgareaselect.pack.js,dropzone.js?v=@Model.ClientVersion"></script>
+	<script type="text/javascript" src="/Scripts/libs/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/ckeditor/adapters/jquery.js"></script>
+	@EndIf;	
+	
+	@IfNot.UseConcatenatedResources;
+    <script type="text/javascript" src="/Scripts/libs/jquery.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery-ui.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery-ui-i18n.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.verifyOptions.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.address.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.form.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.timers.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout-2.mapping.debug.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout-2.address.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/knockout-2.editables.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.validate.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.validate.messages_fr.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/date-fr-FR.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/moment.min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/custom.fonctions.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.sprintf.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery-ui.tag-it.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery-ui.wizard.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery-ui.confirm.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery-ui.multiselect.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/tmpl.min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/load-image.min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/canvas-to-blob.min.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.iframe-transport.js"></script>
+    <script type="text/javascript" src="/Scripts/libs/jquery.fileupload.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/ckeditor/adapters/jquery.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/excanvas.min.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/jquery.peity.min.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/unicorn.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/unicorn.dashboard.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/jquery.imgareaselect.pack.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/dropzone.js"></script>
+	@EndIf;
+	
+    <!-- Javascript application
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	@If.UseConcatenatedResources;
+	<script type="text/javascript" src="/Scripts/application/plumbing/??core.class.js,core.model.js,knockout.bindings.jui.js,knockout.pagination.js,knockout.extensions.js,knockout.bootstrap.js,knockout.bindings.js"></script>
+	@EndIf;
+	
+	@IfNot.UseConcatenatedResources;
+    <script type="text/javascript" src="/Scripts/application/plumbing/core.class.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/core.model.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.bindings.jui.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.pagination.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.extensions.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.bootstrap.js"></script>
+    <script type="text/javascript" src="/Scripts/application/plumbing/knockout.bindings.js"></script>
+    @EndIf;
+	
+	@If.UseConcatenatedResources;
+	<script type="text/javascript" src="/Scripts/application/admin/??models.event.js,models.article.js,models.page.js,models.identity.js,models.filemanageritem.js,models.member.js,models.roletagbinding.js,viewmodels.base.js,viewmodels.navigation.js,viewmodels.articles.js,viewmodels.pages.js,viewmodels.members.js,viewmodels.security.js,viewmodels.roletags.js,notification.js,application.js"></script>
+	@EndIf;
+	
+	@IfNot.UseConcatenatedResources;
+    <script type="text/javascript" src="/Scripts/application/admin/models.progress.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/models.article.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/models.page.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/models.identity.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/models.member.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/models.roletagbinding.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.base.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.navigation.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.articles.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.pages.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.members.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.progress.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.security.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.roletags.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/notification.js"></script>
+	
+	<!-- Application must be the last one -->
+    <script type="text/javascript" src="/Scripts/application/admin/application.js"></script>
+	@EndIf;
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var roles = [{
+				text: 'Aucun role',
+				value: 'None'
+			}, {
+				text: "Utilisateur",
+				value: "User"
+			}, {
+				text: "Rédacteur",
+				value: "Editor"
+			},{
+				text: "Administrateur",
+				value: "Administrator"
+			}];
+		
+			window.application = new app.ApplicationModel({
+			@If.IsAuthenticated;
+				user: true,
+			@EndIf;
+				navigation: { active: app.Sections.Home },
+				articles: {},
+				pages: {},
+				subscribers: {}, 
+				security: { roles: roles }, 
+				roleTags: { roles: roles },
+				notifications: {}
+			});	
+		});
+	</script>
+
+	@Partial['Admin/Dialogs/Login.html'];
+	
+  </body>
+</html>

@@ -1,0 +1,232 @@
+.public a {
+	color: #6F9B31;
+}
+
+.public h3 {
+	line-height: 20px;
+}
+
+.public a:hover 
+{
+  color: #598527;
+}
+
+.public h1, .public h2, .public h3, .public h4, .public h5, .public h6 {
+  color: #ff9000;
+  /*color: #5d5454;*/
+}
+
+.public .caret {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.public .dropdown-menu li th.a:hover, .public .dropdown-menu .active th.a, .public .dropdown-menu .active th.a:hover {
+  background-color: #719E32;
+}
+
+.public .well {
+	/*border: solid 1px #8f8282;*/
+	-moz-box-shadow: 1px 1px 7px #777;
+	-webkit-box-shadow: 1px 1px 7px #777;
+	box-shadow: 1px 1px 7px #777;
+}
+
+.public .btn {
+  color: #ffffff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
+  background-color: #8d8080;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6b6161), color-stop(25%, #6b6161), to(#8d8080));
+  background-image: -webkit-linear-gradient(#6b6161, #6b6161 25%, #8d8080);
+  background-image: -moz-linear-gradient(top, #6b6161, #6b6161 25%, #8d8080);
+  background-image: -ms-linear-gradient(#6b6161, #6b6161 25%, #8d8080);
+  background-image: -o-linear-gradient(#6b6161, #6b6161 25%, #8d8080);
+  background-image: linear-gradient(#6b6161, #6b6161 25%, #8d8080);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b6161', endColorstr='#8d8080', GradientType=0);
+  border: 1px solid #544b4b;
+}
+
+.public .btn:hover {
+  color: #ffffff;
+  background-color: #8BC43E;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#69942f), color-stop(25%, #69942f), to(#8bc43e));
+  background-image: -webkit-linear-gradient(#69942f, #69942f 25%, #8bc43e);
+  background-image: -moz-linear-gradient(top, #69942f, #69942f 25%, #8bc43e);
+  background-image: -ms-linear-gradient(#69942f, #69942f 25%, #8bc43e);
+  background-image: -o-linear-gradient(#69942f, #69942f 25%, #8bc43e);
+  background-image: linear-gradient(#69942f, #69942f 25%, #8bc43e);
+  border-color: #598527;
+}
+
+.public .btn-primary 
+{
+  background-color: #6a6060;
+  background-image: -moz-linear-gradient(top, #6a6060, #8d8080);
+  background-image: -ms-linear-gradient(top, #6a6060, #8d8080);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#6a6060), to(#8d8080));
+  background-image: -webkit-linear-gradient(top, #6a6060, #8d8080);
+  background-image: -o-linear-gradient(top, #6a6060, #8d8080);
+  background-image: linear-gradient(top, #6a6060, #8d8080);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6a6060', endColorstr='#8d8080', GradientType=0);
+  border: solid 1px #544b4b;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.public .navbar-inner{
+	padding-left: 0px;
+}
+
+.public .navbar-inner .container-fluid{
+	padding-left: 0px;
+}
+
+.public .nav .nav-header {
+	display: block;
+	padding: 3px 15px;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 18px;
+	color: #5D5454;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+	text-transform: uppercase;
+}
+
+.public .nav-list th.li th.a, .public .nav-list .nav-header {
+  margin-left: -14px;
+  margin-right: -14px;
+}
+
+.public .nav-list .nav-header {
+  color: #5d5454;
+  text-transform: uppercase;
+}
+
+.public .navbar-inner {
+	border: solid 1px #554C4C;
+	background-image: -moz-linear-gradient(top, #8C7F7F, #6A6060);
+	background-image: -ms-linear-gradient(top, #8C7F7F, #6A6060);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#8C7F7F), to(#6A6060));
+	background-image: -webkit-linear-gradient(top, #8C7F7F, #6A6060);
+	background-image: -o-linear-gradient(top, #8C7F7F, #6A6060);
+	background-image: linear-gradient(top, #8C7F7F, #6A6060);
+}
+
+.public .navbar .navbar-text {
+  color: #ffffff;
+}
+
+.public .navbar .nav .active > a{
+	background-color: #719e32;
+}
+
+.public .navbar .nav > li > a:hover{
+	background-color: #87BD3C;
+}
+
+.public .dropdown-menu a:hover {
+  color: #ffffff;
+  background-color: #87BD3C;
+}
+
+.public .navbar .nav > li > a {
+	color: #ffffff;
+	border-left: solid 1px #554C4C;
+}
+
+.public .hero-unit{
+	-moz-box-shadow: 1px 1px 7px #777;
+	-webkit-box-shadow: 1px 1px 7px #777;
+	box-shadow: 1px 1px 7px #777;
+}
+
+.public .hero-unit h1 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.public .hero-unit p 
+{
+  font-size: 13px;
+  font-weight: 100;
+  line-height: 18px;
+}
+
+.public #news h3{
+	text-align: center;
+}
+
+.admin .input-xlarge{
+	width: auto;
+}
+
+/* Modifications non spécifiques à la partie publique */
+.btn-group input
+{
+	display:inline-block;
+	float:left;
+	margin-bottom: 0;
+}
+
+tbody.no-border, 
+.table tbody + tbody.no-border
+{
+	border-top: none;
+}
+
+/* HACK: Sans cela, le help-block passe au dessus du widget de tags (a cause des float) */
+ul.tagit +select +.help-block
+{
+	position: relative;
+	top: 14px;
+	height: 0;
+	margin-bottom: 48px;
+}
+
+.row-fluid th,
+.row-fluid td {
+	float: none !important;
+	white-space : nowrap;
+}
+
+.row-fluid th.span12 {
+  width: 99.99999998999999%;
+}
+.row-fluid th.span11 {
+  width: 91.489361693%;
+}
+.row-fluid th.span10 {
+  width: 82.97872339599999%;
+}
+.row-fluid th.span9 {
+  width: 74.468085099%;
+}
+.row-fluid th.span8 {
+  width: 65.95744680199999%;
+}
+.row-fluid th.span7 {
+  width: 57.446808505%;
+}
+.row-fluid th.span6 {
+  width: 48.93617020799999%;
+}
+.row-fluid th.span5 {
+  width: 40.425531911%;
+}
+.row-fluid th.span4 {
+  width: 31.914893614%;
+}
+.row-fluid th.span3 {
+  width: 23.404255317%;
+}
+.row-fluid th.span2 {
+  width: 14.89361702%;
+}
+.row-fluid th.span1 {
+  width: 6.382978723%;
+}
+
+.table-striped tbody tr.for-pagination th,
+.table-striped tbody tr.for-pagination th:hover
+{
+	background-color: transparent;
+}

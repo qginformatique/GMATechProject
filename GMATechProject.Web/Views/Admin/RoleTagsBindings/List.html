@@ -1,0 +1,45 @@
+﻿<div id="content-header">
+	<h1><img src="/Resources/images/icons/32/tags.png" /> Toutes les liaisons role/tags</h1>
+</div>
+
+<div class="breadcrumb">
+	<a href="#" navigation-section="Home" class="tip-bottom" data-original-title="Retourner à l'accueil"><i class="icon-home"></i> Accueil</a>
+	<a href="#" navigation-section="RoleTagsBindings">Liaisons role/tags</a>
+	<a href="#" class="current">Toutes les liaisons role/tags</a>
+</div>
+
+<div class="container-fluid">	
+	<div class="widget-box" data-bind="with: roleTags">
+		<div class="widget-title">
+			<span class="icon">
+				<i class="icon-tags"></i>
+			</span>
+			<h5>Toutes les liaisons role/tags</h5>
+		</div>
+		<div class="widget-content nopadding">
+			<table id="bindings-list" class="table table-condensed table-striped table-bordered">
+				<thead>
+					<tr>
+						<th class="span3">Roles</th>
+						<th class="span8">Tags</th>
+						<th class="span2"></th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: bindings()">
+					<tr class="bindings-row">
+						<td data-bind="text: humanRole"></td>
+						<td class="form-inline">
+							<input type="text" name="tags" class="role-tags" data-bind="jqTags: { tags: tags }">
+						</td>
+						<td>
+							<div class="btn-group">
+								<button class="btn bindings-save" data-original-title="Enregistrer" data-bind="jqToolTip: {}"><i class="icon-ok"></i></button>
+								<button class="btn bindings-delete" data-original-title="Supprimer" data-bind="jqToolTip: {}"><i class="icon-remove"></i></button>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	
+	@foreach(var item in Model.Urls) {
+	<text>
+	<url>
+	
+		<loc>@item.Loc</loc>
+		
+		<lastmod>@item.LastMod</lastmod>
+		
+    	<changefreq>@item.ChangeFreq</changefreq>
+		
+    	<priority>@item.Priority</priority>
+	</url>
+	</text>
+	}
+
+</urlset> 

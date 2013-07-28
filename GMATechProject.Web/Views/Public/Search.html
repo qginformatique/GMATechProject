@@ -1,0 +1,19 @@
+<div id="search" class="row-fluid">
+	<h4 class="subtitle"><a href="#" class="search-view" style="color: #000;">Résultats de votre recherche</a></h4>
+
+	<!-- ko with: search -->
+	<!-- Indique que nous travaillons avec la propriété searchResultsPage du modèle application.search -->
+	<!-- ko with: searchResultsPage -->
+	<!-- Loop sur la propriété items de searchResultsPage -->
+	<!-- ko foreach: items -->
+	<div class="home-search-result search-view">
+		<div data-bind="class: type"></div>
+		<div>
+			<p data-bind="text: label"></p>
+			<a href="#" class="search-view"><img class="news-btn" src="/Resources/images/news_lire.jpg" /></a>
+		</div>
+	</div>
+	<!-- /ko -->
+	<!-- /ko -->
+	<!-- /ko -->
+</div>

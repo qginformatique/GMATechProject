@@ -1,0 +1,59 @@
+﻿@{ 
+	Layout = "Public.cshtml";
+	Model.HtmlTitle = "Découvrez tous nos adhérents professionnels";
+}
+
+<!-- ko with: members -->
+<div class="page-content no-select" onselectstart="return false">
+
+	<h1 class="title">Adhérents</h1>
+	
+	<div class="members-pagination" data-bind="visible: membersPage().total() > membersPage().pageSize(), with: membersPage">
+		<a href="#" class="members-previous" data-bind="css: {disabled: pageIndex() == 1}">PRÉCÉDENT</a>
+		
+		<!-- ko foreach: ko.utils.range(1, Math.ceil(total()/pageSize())) -->
+            <a href="#" class="members-pagination-link" 
+               data-bind="text: $data, click: function() { $parents[1].loadData($data, $parent.pageSize()) }, css: { selected: $data == $parent.pageIndex() }"></a>
+        <!-- /ko -->
+		
+		<a href="#" class="members-next">SUIVANT</a>
+	</div>
+	
+	<!-- Indique que nous travaillons avec la propriété membersPage du modèle application.members -->
+	<!-- ko with: membersPage -->
+		<ul class="members" style="clear: both;">
+		<!-- Loop sur la propriété items de membersPage -->
+		<!-- ko foreach: items -->
+			<li>
+				<address>
+					<strong data-bind="text: name()"></strong>
+					<!-- ko if: service().length > 0 --><br/><i data-bind="text: service()" style="font-family: 'Helvetica'"></i><!-- /ko -->
+					<br/><span data-bind="text: address1()"></span>
+					<!-- ko if: address2().length > 0 --><br/><span data-bind="text: address2()"></span><!-- /ko -->
+					<br/><span data-bind="text: zipCode()"></span> <span data-bind="text: city()"></span>
+					<!-- ko if: phone().length > 0 --><br/>Tél : <span data-bind="text: phone()"></span><!-- /ko -->
+					<!-- ko if: website().length > 0--><br/><a data-bind="attr: { href: website()}, text: website()" target="_blank"></a><!-- /ko -->
+				</address>
+			</li>
+		<!-- /ko -->
+		</ul>
+	<!-- /ko -->
+	
+	<div class="members-pagination" data-bind="visible: membersPage().total() > membersPage().pageSize(), with: membersPage">
+		<a href="#" class="members-previous" data-bind="css: {disabled: pageIndex() == 1}">PRÉCÉDENT</a>
+		
+		<!-- ko foreach: ko.utils.range(1, Math.ceil(total()/pageSize())) -->
+            <a href="#" class="members-pagination-link" 
+               data-bind="text: $data, click: function() { $parents[1].loadData($data, $parent.pageSize()) }, css: { selected: $data == $parent.pageIndex() }"></a>
+        <!-- /ko -->
+		
+		<a href="#" class="members-next">SUIVANT</a>
+	</div>
+	
+</div>
+<!-- /ko -->
+
+@section Footer
+{
+	application.members.loadData(0, 8);
+}

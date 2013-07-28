@@ -1,0 +1,50 @@
+﻿@{ 
+	Layout = "Public.cshtml";
+	Model.HtmlTitle = "Dernières actualités";
+}
+
+<div id="articles-page">
+
+	<h1 class="articles-title" style="float: none;">ACTUALITÉS</h1>
+	
+	@foreach(var item in Model.Articles.Items) {
+	<div class="articles-news article-view" data-href="@item.GetFriendlyUrl">
+		<img src="@item.IllustrationImageUrl" class="news-illustration" width="292px" height="181px" />
+		<div>
+			<a href="@item.GetFriendlyUrl"><p><span>@item.TruncateTitle</span></p></a>
+			<a href="@item.GetFriendlyUrl"><img class="news-btn" src="/Resources/images/news_lire.jpg" /></a>
+		</div>
+	</div>
+	}
+	
+	<div class="articles-pagination">
+		
+		@{
+			var currentPageSize = Model.Articles.PageSize;
+			var currentTotal = Model.Articles.Total;
+			var currentIndex = Model.Articles.PageIndex;
+			var pages = Math.Ceiling((double)currentTotal / (double)currentPageSize);
+		}
+		
+		@if(Model.Articles.PageIndex > 1) {
+			if(Model.Articles.PageIndex == 2) {
+			<a href="/actualites/actualites" class="articles-previous">PRÉCÉDENT</a>
+			} else {
+			<a href="/actualites/actualites?pageIndex=@(Model.Articles.PageIndex - 1)" class="articles-previous">PRÉCÉDENT</a>
+			}
+		}
+		
+		@if(pages > 1) {
+			<a href="/actualites/actualites" class="articles-pagination-link @if(Model.Articles.PageIndex == 1){<text>selected</text>}">1</a>
+			for(int i=2; i < pages+1; i++) {
+				@*<a href="/actualites/actualites?pageIndex=@i" class="articles-pagination-link @if(i == Model.Articles.PageIndex){selected}">@i</a>*@
+				<a href="/actualites/actualites?pageIndex=@i" class="articles-pagination-link @if(i == Model.Articles.PageIndex){<text>selected</text>}">@i</a>
+			}
+		}
+        
+        @if((currentIndex + 1)*currentPageSize < (currentTotal + currentPageSize)) {
+		<a href="/actualites/actualites?pageIndex=@(Model.Articles.PageIndex + 1)" class="articles-next">SUIVANT</a>
+		}
+	</div>
+	
+</div>
