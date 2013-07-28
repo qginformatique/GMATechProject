@@ -1,4 +1,4 @@
-echo Building FibreSud
+echo Building GMATechProject
 
 # Build the solution with the MonoRelease configuration
 xbuild /property:Configuration=MonoRelease

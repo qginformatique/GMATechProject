@@ -3,7 +3,7 @@
 # ask supervisor to stop the test environment
 supervisorctl stop gmatechproject_test
 
-cd Blog
+cd GMATechProject
 # Cancel any local changes to the git repository
 git stash save --keep-index
 git stash drop
