@@ -5,7 +5,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{8ABC
 	ProjectSection(SolutionItems) = preProject
 		build-nginx.sh = build-nginx.sh
 		MonoStart.bat = MonoStart.bat
-		Build-FibreSud-Mono.sh = Build-FibreSud-Mono.sh
+		Build-GMATechProject-Mono.sh = Build-GMATechProject-Mono.sh
 		MongodStart.bat = MongodStart.bat
 	EndProjectSection
 EndProject
