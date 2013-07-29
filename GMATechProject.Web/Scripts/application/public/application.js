@@ -16,9 +16,6 @@
 
         ko.applyBindings(_self);
     };
-    
-    // Initalise images LazyLoad
-	$("img[data-original]").lazyload().addClass("lazy-image");
 	
 	// Initialiser FancyBox
 	// Utilisé sur la page Galerie -> Trophées du Bois
