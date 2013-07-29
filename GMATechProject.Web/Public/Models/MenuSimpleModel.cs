@@ -63,7 +63,7 @@
 
 			sections.Add(new MenuSimpleNavItem(){ Label = "Accueil", History = "", Css = "menu-home"});
 			sections.Add(new MenuSimpleNavItem(){ Label = "Progression", History = "progression", Css = "menu-progression" });
-			sections.Add(new MenuSimpleNavItem(){ Label = "Propositions", History = "propositions", Css = "menu-propositions" });
+			sections.Add(new MenuSimpleNavItem(){ Label = "Suggestions", History = "suggestions", Css = "menu-suggestions" });
 			sections.Add(new MenuSimpleNavItem(){ Label = "Nous contacter", History = "contact", Css = "menu-contact", Position = MenuSimpleNavItemPosition.MenuRight });
 
 			sections.Add(new MenuSimpleNavItem(){ Label = "Mentions Légales", History = "mentions-legales", Css = "mentions-legales-link", Position = MenuSimpleNavItemPosition.Footer });

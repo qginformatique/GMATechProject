@@ -1,0 +1,34 @@
+﻿@{ 
+	Layout = "Public.cshtml";
+	Model.HtmlTitle = "Suggestions";
+}
+
+<div id="suggestions-page" style="padding: 30px;">
+
+	<h1 class="suggestions-title" style="margin-bottom: 10px;">Suggestions</h1>
+	
+	@foreach(var item in Model.Suggestions.Items) {
+	<div class="entry">
+		<div class="entry-top">
+			<div class="entry-content">
+				<span class="comment-number"><a href="#">1</a></span>
+				<h2 class="title"><a href="#">@item.Title</a></h2>
+				<span class="quote"></span>
+				<span class="author">- <a href="#" title="Suggestions de 'auteur'" rel="author">'auteur'</a></span>				
+				<div class="clear"></div>
+					<div class="tags">
+						<a href="#"><span>'tag 1'</span></a>
+				</div> <!-- end .tags -->
+			</div>
+		</div>
+	</div>
+	}	
+</div>
+
+@section Footer {	
+	$('.hasPopOver').popover({ 
+		container: 'p',
+		placement: 'top', 
+		trigger: 'hover'
+	});
+}

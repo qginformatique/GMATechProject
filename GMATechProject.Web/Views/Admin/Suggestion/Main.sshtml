@@ -1,0 +1,6 @@
+﻿<div data-bind="invisible: suggestion.isEditing">
+  @Partial['Admin/Suggestion/List.html'];
+</div>
+<div data-bind="visible: suggestion.isEditing">
+  @Partial['Admin/Suggestion/Edition.html'];
+</div>

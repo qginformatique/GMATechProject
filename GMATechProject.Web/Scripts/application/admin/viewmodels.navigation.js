@@ -11,7 +11,8 @@
         Members: 3,
         Security: 4, 
         RoleTagsBindings: 5,
-        Pages: 6
+        Pages: 6,
+        Suggestion: 7
     };
 
     // Constants for the labels of the navigation menu items (called sections)
@@ -22,7 +23,8 @@
         "adherents",
         "securite", 
         "roletags",
-        "pages"
+        "pages",
+        "suggestion"
     ];
 
     /******************************************************************************
@@ -96,6 +98,11 @@
         // Computed property returning a boolean which indicates if the current active section is the RoleTagsBindings section
         _self.navigationRoleTagsBindings = ko.computed(function() {
             return _self.navigationCurrent() == app.Sections.RoleTagsBindings;
+        });
+        
+        // Computed property returning a boolean which indicates if the current active section is the Suggestion section
+        _self.navigationSuggestion = ko.computed(function() {
+            return _self.navigationCurrent() == app.Sections.Suggestion;
         });
         
         // Handler for the click event on the navigation-section button

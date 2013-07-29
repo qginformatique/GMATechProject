@@ -318,19 +318,6 @@ ul.tagit +select +.help-block
 	padding: 2px 10px;
 }
 
-.public #container {
-	background: #fff;
-	margin-top: 30px;
-	
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	
-	-webkit-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.75);
-	-moz-box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.75);
-	box-shadow: 0px 0px 10px rgba(50, 50, 50, 0.75);
-}
-
 [class^="icon-"],
 [class*=" icon-"] {
   background-image: url("/Resources/images/glyphicons-halflings.png");

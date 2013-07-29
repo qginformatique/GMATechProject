@@ -18,7 +18,7 @@
     <![endif]-->
 
     <!-- Le style -->
-	
+	<link href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:light,regular,bold&amp;subset=latin" rel="stylesheet" type="text/css">
 	<!-- v.@Model.ClientVersion -->
 	@if(Model.UseConcatenatedResources) {
 	<text>
@@ -46,16 +46,21 @@
   
   <body class="public">
   
+  	<div class="header">
+  		<div class="header-content">
+  			<a href="/" id="logo-link" title="QG Informatique - Accueil"><img id="logo" src="/Resources/images/logo-qginformatique.png" width="354" height="106" alt="Logo QG Informatique" /></a>
+  		</div>
+  	</div>
+  	<div class="header-navigation">
+  		<!-- Navigation Menu -->
+		@Html.Partial("Public/NavigationMenu.cshtml", Model.NavMenu)
+		<!--/Navigation Menu-->
+  	</div>
+  
   	<div class="page-bg">
 	
 	<!-- Page -->
 	<div id="page" class="page">
-	
-	<a href="/" id="logo-link" title="QG Informatique - Accueil"><img id="logo" src="/Resources/images/logo-qginformatique.png" width="354" height="106" alt="Logo QG Informatique" /></a>
-	
-	<!-- Navigation Menu -->
-	@Html.Partial("Public/NavigationMenu.cshtml", Model.NavMenu)
-	<!--/Navigation Menu-->
 	
 	<div id="container" class="container-fluid">
       <div class="row-fluid" style="padding-bottom: 20px;">

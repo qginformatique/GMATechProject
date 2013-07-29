@@ -11,6 +11,7 @@ namespace GMATechProject.Domain
 	
 	using GMATechProject.Domain.Blog;
 	using GMATechProject.Domain.Progress;
+	using GMATechProject.Domain.Suggestion;
 	using GMATechProject.Domain.Mailing;
 	using GMATechProject.Domain.Members;
 	using GMATechProject.Domain.Pages;
@@ -28,6 +29,7 @@ namespace GMATechProject.Domain
 		public Application (IPageRepository pageRepository,
 		                    IArticleRepository articleRepository, 
 		                    IProgressRepository progressRepository,
+		                    ISuggestRepository suggestRepository,
 		                    IMemberRepository memberRepository, 
 		                    IIdentityRepository identityRepository, 
 		                    IRoleTagsBindingRepository roleTagsBindingRepository,
@@ -37,6 +39,8 @@ namespace GMATechProject.Domain
 		{
 			// Defined in Application.Progress.cs
 			this._ProgressRepository = progressRepository;
+			// Defined in Application.Suggest.cs
+			this._SuggestRepository = suggestRepository;
 			// Defined in Application.Blog.cs
 			this._ArticleRepository = articleRepository;
 			// Defined in Application.Page.cs

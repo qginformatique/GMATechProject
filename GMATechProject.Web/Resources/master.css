@@ -11,6 +11,17 @@ body {
 	background-size: 20px 20px;
 }
 
+.header .header-content {
+	margin: 0 auto;
+	width: 960px;
+}
+
+.header-navigation {
+	background: url('/Resources/images/header-bottom-bg.png') repeat-x;
+	height: 52px;
+	border-bottom: 1px solid #bebebe;
+}
+
 #logo {
 	padding: 5px 0 5px 0;
 }
@@ -20,15 +31,24 @@ h2 {
 	margin-left: 20px;
 }
 
+h2.title a {
+	color: #303030;
+	font-weight: lighter;
+}
+
+h2.title a:hover {
+	color: #000;
+}
+
 .page {
 	margin: 0 auto;
 	padding: 0 20px;
 	position: relative;
-	width: 1000px;
+	width: 960px;
 }
 
 .page-bg {
-	/*background: url('/Resources/images/white-top.png') top repeat-x;*/
+	background: #fff url('/Resources/images/content-bg.png');
 }
 
 .sidebar-nav {
@@ -40,6 +60,9 @@ h2 {
 	border-right: solid 1px #e3e3e3;
 	font-size: 14px;
 	text-align: center;
+	
+	height: 32px;
+	line-height: 32px;
 }
 
 .navbar .nav > li.active > a, .navbar .nav > li > a:hover, .navbar .nav > li.active > a:hover,
@@ -1068,4 +1091,105 @@ img.dark.lazy-image {
 .progress-list li {
 	float: left;
 	margin: 10px;
+}
+
+#suggestions-page .entry {
+	background: url('/Resources/images/entry-bottom.png') no-repeat bottom left;
+	padding-bottom: 55px;
+	width: 682px;
+	position: relative;
+	margin-bottom: 11px;
+}
+
+#suggestions-page .entry-top {
+	background: url('/Resources/images/entry-top.png') no-repeat top left;
+	padding-top: 25px;
+	width: 682px;
+}
+
+#suggestions-page .entry-content {
+	background: url('/Resources/images/entry-content.png') repeat-y;
+	padding-left: 34px;
+	padding-right: 34px;
+	min-height: 50px;
+}
+
+#suggestions-page span.comment-number {
+	position: absolute;
+	top: 27px;
+	left: -28px;
+	display: block;
+	width: 60px;
+	height: 56px;
+}
+
+#suggestions-page span.comment-number a {
+	background: url('/Resources/images/comment-number.png') no-repeat;
+	display: block;
+	width: 60px;
+	height: 43px;
+	font-size: 24px;
+	color: #ffffff;
+	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+	text-decoration: none;
+	padding: 13px 0px 0px 0px;
+	text-align: center;
+}
+
+#suggestions-page span.unanswered a {
+	background: url('/Resources/images/comment-number-unanswered.png') no-repeat !important;
+}
+
+#suggestions-page h2.title {
+	font-size: 36px;
+	font-family: 'Yanone Kaffeesatz', Arial, sans-serif;
+	font-weight: lighter;
+	display: inline;
+	color: #303030;
+	background: url('/Resources/images/top-quote.png') no-repeat 0px 10px;
+	padding-left: 20px;
+}
+
+#suggestions-page span.quote {
+	background: url('/Resources/images/bottom-quote.png') no-repeat;
+	width: 14px;
+	display: inline-block;
+	height: 24px;
+	margin-left: 2px;
+}
+
+#suggestions-page span.author, #suggestions-page span.author a {
+	color: #c6c6c6;
+	font-family: Georgia, serif;
+	font-size: 14px;
+	font-style: italic;
+}
+
+#suggestions-page div.tags {
+	position: absolute;
+	bottom: 15px;
+	right: 80px;
+}
+
+#suggestions-page div.tags a {
+	background: url('/Resources/images/tag-bg.png') no-repeat top left;
+	display: block;
+	height: 28px;
+	padding-left: 16px;
+	float: left;
+	font-size: 14px;
+	color: #777676;
+	font-family: Georgia;
+	font-style: italic;
+	text-shadow: 1px 1px 1px #fff;
+	line-height: 23px;
+	margin-right: 8px;
+}
+
+#suggestions-page div.tags a span {
+	background: url('/Resources/images/tag-bg.png') no-repeat bottom right;
+	display: block;
+	height: 28px;
+	padding: 0px 11px 0px 3px;
 }

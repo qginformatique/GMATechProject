@@ -1,25 +1,23 @@
-﻿<div id="navigation-top" class="navbar navbar-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<div class="nav-collapse">
-				<ul class="nav">
-				@foreach (var item in Model.NavSectionsMenuLeft) {
-					<li class="@item.IsActive">
-						<a href="@(!string.IsNullOrEmpty(item.Href) ? item.Href : '/' + item.History)" class="@item.Css">@item.Label</a>
-					</li>
-				}
-				</ul>
-				
-				<ul class="nav pull-right" style="border-left: solid 1px #e3e3e3;">
-			    @foreach (var item in Model.NavSectionsMenuRight) {
-					<li class="@item.IsActive">
-						<a href="@(!string.IsNullOrEmpty(item.Href) ? item.Href : '/' + item.History)" class="@item.Css">@item.Label</a>
-					</li>
-				}
-			    </ul>
-			</div>
-			<!--/.nav-collapse -->
+﻿<div id="navigation-top" class="navbar navbar-top" style="width: 960px; margin: 0 auto;">
+	<div class="container">
+		<div class="nav-collapse">
+			<ul class="nav">
+			@foreach (var item in Model.NavSectionsMenuLeft) {
+				<li class="@item.IsActive">
+					<a href="@(!string.IsNullOrEmpty(item.Href) ? item.Href : '/' + item.History)" class="@item.Css">@item.Label</a>
+				</li>
+			}
+			</ul>
+			
+			<ul class="nav pull-right" style="border-left: solid 1px #e3e3e3;">
+		    @foreach (var item in Model.NavSectionsMenuRight) {
+				<li class="@item.IsActive">
+					<a href="@(!string.IsNullOrEmpty(item.Href) ? item.Href : '/' + item.History)" class="@item.Css">@item.Label</a>
+				</li>
+			}
+		    </ul>
 		</div>
+		<!--/.nav-collapse -->
 	</div>
 </div>
 <!--/row-->

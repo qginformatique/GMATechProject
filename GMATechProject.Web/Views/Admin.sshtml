@@ -13,7 +13,7 @@
 
     <!-- Css Librairies -->
 	@If.UseConcatenatedResources;
-	<link href="/Resources/??bootstrap.css,bootstrap-extensions.css,bootstrap-responsive.css,jquery-ui-1.8.16.css,jquery-ui.tagit.css,jquery-ui.wizard.css,jquery-ui.multiselect.css,jquery-ui-extensions.css,jquery.fileupload-ui.css,unicorn.main.css,unicorn.grey.css,imgareaselect-default.css,dropzone.css?v=@Model.ClientVersion" rel="stylesheet">
+	<link href="/Resources/??bootstrap.css,bootstrap-extensions.css,bootstrap-responsive.css,jquery-ui-1.8.16.css,jquery-ui.tagit.css,jquery-ui.wizard.css,jquery-ui.multiselect.css,jquery-ui-extensions.css,jquery.fileupload-ui.css,unicorn.main.css,unicorn.grey.css?v=@Model.ClientVersion" rel="stylesheet">
 	@EndIf;
 	
 	@IfNot.UseConcatenatedResources;	
@@ -28,8 +28,6 @@
     <link href="/Resources/jquery.fileupload-ui.css" rel="stylesheet">
     <link href="/Resources/unicorn.main.css" rel="stylesheet">
     <link href="/Resources/unicorn.grey.css" rel="stylesheet">
-    <link href="/Resources/imgareaselect-default.css" rel="stylesheet">
-    <link href="/Resources/dropzone.css" rel="stylesheet">
 	@EndIf;
 	
     <!-- Css Application -->
@@ -74,6 +72,7 @@
 		<ul class="nav" style="display: block;" data-bind="with: navigation">
 			<li data-bind="css: { active: navigationHome }"><a href="#home" navigation-section="Home"><i class="icon icon-home"></i> <span>Tableau de bord</span></a></li>
 			<li data-bind="css: { active: navigationProgress }"><a href="#" navigation-section="Progress"><i class="icon icon-tasks"></i> <span>Progression</span></a></li>
+			<li data-bind="css: { active: navigationSuggestion }"><a href="#" navigation-section="Suggestion"><i class="icon icon-comment"></i> <span>Suggestions</span></a></li>
 			<li data-bind="css: { active: navigationArticles }"><a href="#articles" navigation-section="Articles"><i class="icon icon-pencil"></i> <span>Articles</span></a></li>				
 			<li data-bind="css: { active: navigationPages }"><a href="#pages" navigation-section="Pages"><i class="icon icon-file"></i> <span>Pages</span></a></li>				
 			<li data-bind="css: { active: navigationMembers }"><a href="#" navigation-section="Members"><i class="icon icon-user"></i> <span>Adhérents</span></a></li>
@@ -94,6 +93,11 @@
 			<!-- Section: Progression -->
 			<div id="progress" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationProgress">
 				@Partial['Admin/Progress/Main.sshtml'];
+			</div><!--/row-->
+			
+			<!-- Section: Suggestion -->
+			<div id="suggestion" class="row-fluid" style="display: none;" data-bind="visible: navigation.navigationSuggestion">
+				@Partial['Admin/Suggestion/Main.sshtml'];
 			</div><!--/row-->
 
 			<!-- Section: Articles -->
@@ -135,7 +139,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 	@If.UseConcatenatedResources;
-	<script src="/Scripts/libs/??jquery.js,jquery-ui.js,jquery-ui-i18n.js,jquery.verifyOptions.js,jquery.address.js,jquery.form.js,jquery.timers.js,bootstrap.min.js,knockout.js,knockout-2.mapping.js,knockout-2.address.js,knockout-2.editables.js,jquery.validate.js,jquery.validate.messages_fr.js,date-fr-FR.js,moment.min.js,custom.fonctions.js,jquery.sprintf.js,jquery-ui.tag-it.js,jquery-ui.wizard.js,jquery-ui.confirm.js,jquery-ui.multiselect.js,tmpl.min.js,load-image.min.js,canvas-to-blob.min.js,jquery.iframe-transport.js,jquery.fileupload.js,excanvas.min.js,jquery.peity.min.js,unicorn.js,unicorn.dashboard.js,jquery.imgareaselect.pack.js,dropzone.js?v=@Model.ClientVersion"></script>
+	<script src="/Scripts/libs/??jquery.js,jquery-ui.js,jquery-ui-i18n.js,jquery.verifyOptions.js,jquery.address.js,jquery.form.js,jquery.timers.js,bootstrap.min.js,knockout.js,knockout-2.mapping.js,knockout-2.address.js,knockout-2.editables.js,jquery.validate.js,jquery.validate.messages_fr.js,date-fr-FR.js,moment.min.js,custom.fonctions.js,jquery.sprintf.js,jquery-ui.tag-it.js,jquery-ui.wizard.js,jquery-ui.confirm.js,jquery-ui.multiselect.js,tmpl.min.js,load-image.min.js,canvas-to-blob.min.js,jquery.iframe-transport.js,jquery.fileupload.js,excanvas.min.js,jquery.peity.min.js,unicorn.js,unicorn.dashboard.js?v=@Model.ClientVersion"></script>
 	<script type="text/javascript" src="/Scripts/libs/ckeditor/ckeditor.js"></script>
 	<script type="text/javascript" src="/Scripts/libs/ckeditor/adapters/jquery.js"></script>
 	@EndIf;	
@@ -174,8 +178,6 @@
 	<script type="text/javascript" src="/Scripts/libs/jquery.peity.min.js"></script>
 	<script type="text/javascript" src="/Scripts/libs/unicorn.js"></script>
 	<script type="text/javascript" src="/Scripts/libs/unicorn.dashboard.js"></script>
-	<script type="text/javascript" src="/Scripts/libs/jquery.imgareaselect.pack.js"></script>
-	<script type="text/javascript" src="/Scripts/libs/dropzone.js"></script>
 	@EndIf;
 	
     <!-- Javascript application
@@ -196,11 +198,12 @@
     @EndIf;
 	
 	@If.UseConcatenatedResources;
-	<script type="text/javascript" src="/Scripts/application/admin/??models.event.js,models.article.js,models.page.js,models.identity.js,models.filemanageritem.js,models.member.js,models.roletagbinding.js,viewmodels.base.js,viewmodels.navigation.js,viewmodels.articles.js,viewmodels.pages.js,viewmodels.members.js,viewmodels.security.js,viewmodels.roletags.js,notification.js,application.js"></script>
+	<script type="text/javascript" src="/Scripts/application/admin/??models.progress.js,models.suggest.js,models.article.js,models.page.js,models.identity.js,models.member.js,models.roletagbinding.js,viewmodels.base.js,viewmodels.navigation.js,viewmodels.articles.js,viewmodels.pages.js,viewmodels.members.js,viewmodels.security.js,viewmodels.roletags.js,viewmodels.progress.js,viewmodels.suggestion.js,notification.js,application.js"></script>
 	@EndIf;
 	
 	@IfNot.UseConcatenatedResources;
     <script type="text/javascript" src="/Scripts/application/admin/models.progress.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/models.suggest.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/models.article.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/models.page.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/models.identity.js"></script>
@@ -212,6 +215,7 @@
     <script type="text/javascript" src="/Scripts/application/admin/viewmodels.pages.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/viewmodels.members.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/viewmodels.progress.js"></script>
+    <script type="text/javascript" src="/Scripts/application/admin/viewmodels.suggestion.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/viewmodels.security.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/viewmodels.roletags.js"></script>
     <script type="text/javascript" src="/Scripts/application/admin/notification.js"></script>

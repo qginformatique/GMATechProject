@@ -177,6 +177,12 @@
     <Compile Include="Progress\ProgressStepValidator.cs" />
     <Compile Include="Progress\ProgressRepository.cs" />
     <Compile Include="Progress\IProgressRepository.cs" />
+    <Compile Include="Suggestion\Application.Suggest.cs" />
+    <Compile Include="Suggestion\IApplication.Suggest.cs" />
+    <Compile Include="Suggestion\Suggest.cs" />
+    <Compile Include="Suggestion\SuggestValidator.cs" />
+    <Compile Include="Suggestion\SuggestRepository.cs" />
+    <Compile Include="Suggestion\ISuggestRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

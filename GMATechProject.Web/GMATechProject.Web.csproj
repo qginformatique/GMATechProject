@@ -483,7 +483,6 @@
     <None Include="Scripts\application\public\authentication.js" />
     <None Include="Scripts\application\public\members.js" />
     <None Include="Scripts\application\public\search.js" />
-    <None Include="Resources\dropzone.css" />
     <Content Include="Views\Admin\Pages\Main.sshtml" />
     <Content Include="Views\Admin\Pages\List.html" />
     <Content Include="Views\Admin\Pages\Edition.html">
@@ -755,7 +754,6 @@
     <Content Include="Views\Admin\Dialogs\FileBrowse.cshtml">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Scripts\libs\dropzone.js" />
     <None Include="Resources\jquery.mobile-1.3.1.min.css" />
     <None Include="Scripts\libs\jquery.mobile-1.3.1.min.js" />
     <Content Include="Views\Public\RSS.cshtml" />
@@ -773,6 +771,14 @@
     <None Include="Scripts\application\admin\viewmodels.progress.js" />
     <None Include="Scripts\libs\jquery.knob.js" />
     <None Include="Views\Public\Pages\progression.cshtml" />
+    <None Include="Scripts\application\admin\viewmodels.suggestion.js" />
+    <None Include="Scripts\application\admin\models.suggest.js" />
+    <Content Include="Views\Admin\Suggestion\Edition.html">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Admin\Suggestion\List.html" />
+    <Content Include="Views\Admin\Suggestion\Main.sshtml" />
+    <None Include="Views\Public\Pages\suggestions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\AdminModule.cs" />
@@ -825,6 +831,9 @@
     <Compile Include="Admin\ProgressModule.cs" />
     <Compile Include="Public\ProgressModule.cs" />
     <Compile Include="Public\Models\ProgressStepsModel.cs" />
+    <Compile Include="Admin\SuggestionModule.cs" />
+    <Compile Include="Public\SuggestionModule.cs" />
+    <Compile Include="Public\Models\SuggestionModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

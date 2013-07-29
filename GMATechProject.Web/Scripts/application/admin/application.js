@@ -85,6 +85,8 @@ jQuery(function ($) {
         _self.navigation = new app.NavigationModel(this, options.navigation);
         
         _self.progress = new app.ProgressModel(this, options.progress);
+        
+        _self.suggestion = new app.SuggestionModel(this, options.suggestion);
 
         _self.articles = new app.ArticlesModel(this, options.articles);
         
