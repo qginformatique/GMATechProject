@@ -7,6 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMATechProject.Domain", "GM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMATechProject.Tests", "GMATechProject.Domain.Tests\GMATechProject.Tests.csproj", "{CCE0EA17-90D4-4A2D-B261-98E9E60856CA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{0B2523F3-7519-4FC0-9427-CB1FF681422E}"
+	ProjectSection(SolutionItems) = preProject
+		Build-GMATechProject-Mono.sh = Build-GMATechProject-Mono.sh
+		build-nginx.sh = build-nginx.sh
+		MongodStart.bat = MongodStart.bat
+		MonoStart.bat = MonoStart.bat
+		PushGMATechProjectToProduction.sh = PushGMATechProjectToProduction.sh
+		ReGitGMATechProject.sh = ReGitGMATechProject.sh
+		UpdateGMATechProject.sh = UpdateGMATechProject.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -53,6 +64,8 @@ Global
 		{CCE0EA17-90D4-4A2D-B261-98E9E60856CA}.MonoRelease|x86.Build.0 = Debug|x86
 		{CCE0EA17-90D4-4A2D-B261-98E9E60856CA}.Release|x86.ActiveCfg = Release|x86
 		{CCE0EA17-90D4-4A2D-B261-98E9E60856CA}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = GMATechProject.Web\GMATechProject.Web.csproj

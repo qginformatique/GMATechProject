@@ -12,7 +12,6 @@ rm -R -f build/*
 # Copy the build to the build directory
 cp -R GMATechProject.Web/Resources build/
 cp -R GMATechProject.Web/Scripts build/
-cp -R GMATechProject.Web/Upload build/
 cp -R GMATechProject.Web/Views build/
 cp -R GMATechProject.Web/bin build/
 mkdir -p build/logs
