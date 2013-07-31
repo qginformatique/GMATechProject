@@ -1,0 +1,16 @@
+﻿@{ 
+	Layout = "Public.cshtml";
+}
+
+<div class="page-content">
+	<h1 class="title">@Model.Page.Title</h1>
+	
+	@if(Model.Page.PublicationState == PublicationState.Draft) {
+		<text>Cette page a été désactivée temporairement.</text>
+	}
+	
+	@if(Model.Page.PublicationState == PublicationState.Published) {
+		@Html.Raw(Model.Page.Content)
+	}
+	
+</div>

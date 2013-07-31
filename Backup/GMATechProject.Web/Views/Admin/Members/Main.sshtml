@@ -1,0 +1,6 @@
+﻿<div data-bind="invisible: members.isEditing">
+  @Partial['Admin/Members/List.html'];
+</div>
+<div data-bind="visible: members.isEditing">
+  @Partial['Admin/Members/Edition.html'];
+</div>

@@ -1,0 +1,79 @@
+﻿<div id="content-header">
+	<h1><img src="/Resources/images/icons/32/monitor.png" /> Tableau de bord</h1>
+</div>
+
+<div class="breadcrumb">
+	<a href="#" class="tip-bottom" navigation-section="Home" data-original-title="Retourner à l'accueil"><i class="icon-home"></i> Accueil</a>
+	<a href="#" class="current">Tableau de bord</a>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12 center" style="text-align: center;">					
+			<ul class="stat-boxes">
+				<li style="cursor: pointer;">
+					<a href="#articles" navigation-section="Articles" style="color: #DCDCDC;">
+						<div class="left" style="height: 52px;">
+							<img src="/Resources/images/icons/48/text.png">
+						</div>
+						<div class="right">
+							<span style="font-size: 1.2em;">Gérer les Articles</span>
+						</div>
+					</a>
+				</li>
+				<li style="cursor: pointer;">
+					<a href="#articles" navigation-section="Pages" style="color: #DCDCDC;">
+						<div class="left" style="height: 52px;">
+							<img src="/Resources/images/icons/48/page.png">
+						</div>
+						<div class="right">
+							<span style="font-size: 1.2em;">Gérer les Pages</span>
+						</div>
+					</a>
+				</li>
+				<li style="cursor: pointer;">
+					<a href="#" navigation-section="Members" style="color: #DCDCDC;">
+						<div class="left" style="height: 52px;">
+							<img src="/Resources/images/icons/48/members.png">
+						</div>
+						<div class="right">
+							<span style="font-size: 1.2em;">Gérer les adhérents</span>
+						</div>
+					</a>
+				</li>
+				<!--
+				<li style="cursor: pointer;">
+					<a href="#" navigation-section="Security" style="color: #DCDCDC;">
+						<div class="left" style="height: 52px;">
+							<img src="/Resources/images/icons/32/lock.png">
+						</div>
+						<div class="right">
+							<span style="font-size: 1.2em;">Gérer les utilisateurs</span>
+						</div>
+					</a>
+				</li>
+				<li style="cursor: pointer;">
+					<a href="#" navigation-section="RoleTagsBindings" style="color: #DCDCDC;">
+						<div class="left" style="height: 52px;">
+							<img src="/Resources/images/icons/32/tags.png">
+						</div>
+						<div class="right">
+							<span style="font-size: 1.2em;">Gérer les rôles & tags</span>
+						</div>
+					</a>
+				</li>
+				-->
+			</ul>
+		</div>	
+	</div>
+	<!--
+	<div class="row-fluid">
+		<p>
+			<button class="btn btn-info" onclick="window.application.info('Ceci est un message d\'information.')">Info!</button>
+			<button class="btn btn-success" onclick="window.application.success('Cette action a été efféctuée avec succès.')">Success!</button>
+			<button class="btn btn-warning" onclick="window.application.warning('Attention, ceci est un message d\'avertissement.')">Warning!</button>
+			<button class="btn btn-danger" onclick="window.application.error('Oops! Il y a eu une erreur.')">Error!</button>
+		</p>
+	</div>
+	-->
+</div>

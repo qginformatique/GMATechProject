@@ -1,0 +1,57 @@
+﻿@{ 
+	Layout = "Public.cshtml";
+}
+
+@if(Model.Article.PublicationState == PublicationState.Draft && Model.Article.ShowDraft == false) {
+	<div id="article-page" class="page-content">
+	
+	<h1 class="article-title">@Model.Article.Title</h1>
+	
+	<p style="margin-top: 40px; font-weight: bold; color: #3C5E00;"><img src="/Resources/images/btn_green.png" style="float: none; border: none;" /> Cet article n'est pas disponible actuellement.</p>
+
+	</div>
+} else {
+
+if(Model.Article.ShowDraft) {
+	<p style="background-color: #DEFFA6; border: dashed 2px #5F9600; color: #3C5E00; padding: 15px; text-align: center;">Cet article est un brouillon. Il sera soumis à vérification avant d'être affiché dans sa version définitive sur le site Public.</p>
+}
+
+<div id="article-page" class="page-content">
+
+	<!--
+	<div class="article-pagination" style="text-align: right;">
+		<a href="#" class="btn-prev-article"><img src="/Resources/images/encoche-prev-jaune.png" alt="Article précédent" /></a>
+		Actualités
+		<a href="#" class="btn-next-article"><img src="/Resources/images/encoche-next-jaune.png" alt="Article suivant" /></a>
+	</div>
+	-->
+
+	<h1 class="article-title">@Model.Article.Title</h1>
+	<p class="article-date">Publié le @Model.Article.PublicationDateInFrench</p>
+	
+	<p class="article-accroche">@Model.Article.Description</p>
+		
+	<div class="article-content">
+		<div class="article-illustration"><img height="363" src="@Model.Article.MainIllustrationImageUrl" width="629"></div>
+		@Html.Raw(Model.Article.Content)
+	</div>
+		
+	<a href="/actualites/actualites" class="btn" style="margin-top: 15px;">Retourner à la liste des articles</a>
+	
+	<br/>
+	<hr/>
+	
+	<div class="article-footer" style="overflow: hidden;">
+		<!-- AddThis Button BEGIN -->
+		<div class="addthis_toolbox addthis_default_style addthis_32x32_style" style="float: left;">
+			<a class="addthis_button_facebook"></a>
+			<a class="addthis_button_twitter"></a>
+		</div>
+		<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-519e20337e968f09"></script>
+		<!-- AddThis Button END -->
+		<a href="javascript:window.print();" class="btn-print" style="float: right;"><img src="/Resources/images/imprimer.png" width="70" height="20" style="border: none; float: none; margin: 0; cursor: pointer;" /></a>
+	</div>
+
+</div>
+
+}

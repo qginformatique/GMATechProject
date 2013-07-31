@@ -1,0 +1,24 @@
+﻿@{
+	Layout = "Public.cshtml";
+	Model.NavMenu.NavSectionsMenuLeft[0].IsActive = "active";
+}
+
+<!-- Bloc: FlexSlider -->
+<div class="block slider-block" style="margin-top: 20px;">
+	@Html.Partial("Public/Blocs/FlexSlider.cshtml", Model)
+</div><!--/bloc-->
+
+@*<!-- Bloc: Actualités -->
+<div id="news" class="row-fluid">
+	@Html.Partial("Public/Blocs/News.cshtml", Model)
+</div><!--/bloc-->*@
+
+@section Footer {
+	$(".flexslider").flexslider({
+	    animation: "fade",
+	    directionNav: true,
+	    pauseOnAction: true,
+	    pauseOnHover: false,
+	    slideshowSpeed: 4000
+	});
+}

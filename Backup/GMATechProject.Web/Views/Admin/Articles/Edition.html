@@ -1,0 +1,119 @@
+﻿<div id="content-header">
+	<h1 data-bind="visible: articles.isAdding">Nouvel article</h1>
+	<h1 data-bind="invisible: articles.isAdding">Modification de l'article</h1>
+</div>
+
+<div class="breadcrumb">
+	<a href="#" navigation-section="Home" class="tip-bottom" data-original-title="Retourner à l'accueil"><i class="icon-home"></i> Accueil</a>
+	<a href="#" navigation-section="Articles">Articles</a>
+	<a href="#" class="current">
+		<span data-bind="visible: articles.isAdding">Nouvel article</span>
+		<span data-bind="invisible: articles.isAdding">Modification de l'article</span>
+	</a>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<form id="article-form-edition" name="article-form" class="form-edition form-horizontal" data-bind="with: articles.editedItem">
+				<input type="hidden" name="id" data-bind="value: id" />
+				<fieldset>
+					<legend class="ui-helper-hidden">Titre, Tags &amp; Date</legend>
+					
+					<div class="control-group">
+						<label class="control-label" for="title">Titre</label>
+						<div class="controls">
+							<input class="span10 input-xlarge" name="title" placeholder="Titre de l'article" required="required" maxlength="256" type="text" data-bind="value: title" />
+							<span class="help-block ui-priority-secondary">Par défaut, ce titre sera également utilisé pour le référencement.</span>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="image">Image d'illustration</label>
+						<div class="controls">
+							<div class="dropzone" style="width: 50%; float: left;"></div>
+							<div style="width: 50%; float: left; text-align: center;">Aperçu
+								<div><img data-bind="attr: { src: imageUrlPath }" /></div>
+							</div>
+							<input class="span10 input-xlarge" name="imageUrl" placeholder="Url de l'image d'illustration" type="text" data-bind="value: imageUrl" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="publicationDate">Date de publication</label>
+						<div class="controls">
+							<input class="span6" name="publicationDate" type="text" data-bind="value: publicationDate.formatted, jqDatePicker: {}" />
+							<span class="help-block ui-priority-secondary">Cette date n'est pas obligatoire: si elle n'est pas spécifiée, l'article restera en statut <b>Brouillon</b>.</span>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="description">Extrait</label>
+						<div class="controls">
+							<textarea class="span10 input-xlarge" name="description" placeholder="Description de l'article" required="required" maxlength="512" type="text" data-bind="value: description"></textarea>
+							<span class="help-block ui-priority-secondary">Par défaut, cet extrait sera également utilisé pour le référencement.</span>
+						</div>
+					</div>
+					
+					<div class="control-group">
+				      <label class="control-label" for="homeSlider">Intégrer dans l'animation de la page d'accueil (Slider)</label>
+						<div class="controls">
+							<input type="checkbox" name="homeSlider" class="span3" data-bind="checked: homeSlider">
+					      	<span class="help-block ui-priority-secondary">Cocher cette case pour intégrer cet article à l'animation de la page d'accueil.<br/>L'image doit se trouver dans le dossier Upload/images/slider/ et doit avoir le même nom que celui spécifié plus haut (Image d'illustration).<br/>Elle doit être aux dimensions suivantes: 632 x 367 pixels.<br/>La miniature affichée en dessous doit se trouver également dans le dossier /Upload/images/slider/ et doit avoir le même nom précédé de la mention "thumb_" exemple "thumb_image.jpg". Les dimensions de la miniatures: 136 x 87 pixels.</span>
+						</div>
+				    </div>
+					
+				    <div class="control-group">
+				      <label class="control-label" for="tags">Mots clés</label>
+						<div class="controls">
+							<input type="text" name="tags" class="span10 tags" data-bind="jqTags: { tags: tags }">
+					      	<span class="help-block ui-priority-secondary">Entrez vos mot clé en les validant avec <b>Entrée</b>. Par défaut, ces mots clés seront également utilisés pour le référencement.</span>
+						</div>
+				    </div>
+				</fieldset>
+				
+				<fieldset>
+					<div class="control-group">
+						<legend class="ui-helper-hidden">Contenu</legend>
+						<div class="controls" style="margin: 0 15px;">
+							<textarea class="span10 rich-content input-xlarge notPlaceholder" name="content" placeholder="Contenu de l'article" required="required" data-bind="value: content"></textarea>
+						</div>
+					</div>
+				</fieldset>
+				
+				<fieldset>
+					<legend class="ui-helper-hidden">SEO</legend>
+					
+					<div class="control-group">
+						<label class="control-label" for="seotitle">URL Simplifiée</label>
+						<div class="controls">
+							<input class="span10 input-xlarge notPlaceholder" name="friendlyUrl" placeholder="URL simplifiée (exemple: titre-de-l-article)" maxlength="256" type="text" data-bind="value: friendlyUrl"/>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="seotitle">Titre SEO</label>
+						<div class="controls">
+							<input class="span10 input-xlarge notPlaceholder" name="seotitle" placeholder="Titre de l'article" maxlength="256" type="text" data-bind="value: seoTitle"/>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="seodescription">Extrait SEO</label>
+						<div class="controls">
+							<textarea class="span10 input-xlarge notPlaceholder" name="seodescription" placeholder="Description de l'article" maxlength="512" type="text" data-bind="value: seoDescription"></textarea>
+						</div>
+					</div>
+					
+					<div class="control-group">
+					  <label class="control-label" for="seokeywords">Mots clés SEO</label>
+						<div class="controls">
+							<input type="text" name="seokeywords" class="span10 tags" data-bind="jqTags: { tags: seoKeywords }">
+					      	<span class="help-block ui-priority-secondary">Entrez vos mot clé en les validant avec <b>Entrée</b>.</span>
+						</div>
+				    </div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

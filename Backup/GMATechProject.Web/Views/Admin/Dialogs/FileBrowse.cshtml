@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>FIBRESUD - FileManager</title>
+	
+    <link href="/Resources/jqueryFileTree.css" rel="stylesheet">
+    <link href="/Resources/unicorn.main.css" rel="stylesheet">
+	
+    <!-- Css Application -->
+    <link href="/Resources/application.css" rel="stylesheet">
+
+    <!-- fav and touch icons -->
+    <link rel="shortcut icon" href="/Resources/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/Resources/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Resources/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Resources/images/apple-touch-icon-114x114.png">
+  </head>
+  
+  <body class="admin">
+  
+  	<h4>Sélectionnez un fichier</h4>
+	
+	<div id="fileTree" class="demo">
+	</div>
+  
+	<script type="text/javascript" src="/Scripts/libs/jquery.js"></script>
+	<script type="text/javascript" src="/Scripts/libs/jqueryFileTree.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){			
+			// Load FileTree
+			$('#fileTree').fileTree({ script: '/admin/fileManager/cke/filebrowse/getTree' }, function(file) {
+		        window.opener.CKEDITOR.tools.callFunction( @Model.CKEditorFuncNum, file );
+		        window.close();
+		    });
+		});
+	</script>
+  
+  </body>  
+  
+</html>

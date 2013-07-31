@@ -1,0 +1,171 @@
+﻿<div id="content-header">
+	<h1 data-bind="visible: articles.isAdding">Nouvel adhérent</h1>
+	<h1 data-bind="invisible: articles.isAdding">Modification de l'adhérent</h1>
+</div>
+
+<div class="breadcrumb">
+	<a href="#" navigation-section="Home" class="tip-bottom" data-original-title="Retourner à l'accueil"><i class="icon-home"></i> Accueil</a>
+	<a href="#" navigation-section="Members">Adhérents</a>
+	<a href="#" class="current">
+		<span data-bind="visible: articles.isAdding">Nouvel adhérent</span>
+		<span data-bind="invisible: articles.isAdding">Modification de l'adhérent</span>
+	</a>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<form id="member-form-edition" name="member-form" class="form-edition form-horizontal" data-bind="with: members.editedItem">
+			  <fieldset>
+			    <legend class="ui-helper-hidden">Renseignements</legend>
+
+				<div class="control-group">
+					<label class="control-label" for="name">Nom ou Raison sociale</label>
+						<div class="controls">
+					<input class="span10" name="name" placeholder="Nom ou raison sociale de l'adhérent" required="required" maxlength="256" type="text" data-bind="value: name" />
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+			    
+			    <div class="control-group">
+					<label class="control-label" for="address1">Adresse Ligne 1</label>
+						<div class="controls">
+					<input class="span10" name="address1" placeholder="Adresse 1" required="required" maxlength="256" type="text" data-bind="value: address1" />
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+
+				<div class="control-group">
+					<label class="control-label" for="address2">Adresse Ligne 2</label>
+						<div class="controls">
+					<input class="span10" name="address2" placeholder="Adresse 2" maxlength="256" type="text" data-bind="value: address2" />
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+			    
+			    <div class="control-group">
+					<label class="control-label" for="zipCode">Code postal & Ville</label>
+					<div class="controls">
+						<input class="span1" name="zipCode" placeholder="Code postal" required="required" maxlength="5" type="text" data-bind="value: zipCode" />
+						<input class="span9" name="city" placeholder="Ville" required="required" maxlength="256" type="text" data-bind="value: city" />
+						<span class="help-block ui-priority-secondary"></span>
+			    	</div>
+			    </div>
+			    
+			    <div class="control-group">
+					<label class="control-label" for="professional">Professionel</label>
+					<div class="controls">
+						<label class="checkbox">
+							<input name="professional" type="checkbox" data-bind="checked: professional" />
+						</label>
+			    	</div>
+			    </div>
+			    
+			    <div class="control-group" data-bind="visible:professional">
+					<label class="control-label" for="service">Métier</label>
+						<div class="controls">
+					<input class="span10" name="service" placeholder="Métier" maxlength="256" type="text" data-bind="value: service" />
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+			    
+			    <div class="control-group">
+					<label class="control-label" for="phone">Téléphone</label>
+						<div class="controls">
+					<input class="span10" name="phone" placeholder="Téléphone" maxlength="256" type="text" data-bind="value: phone" />
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+			    
+			    <div class="control-group">
+					<label class="control-label" for="email">Email</label>
+					<div class="controls">
+						<input class="span10" name="email" placeholder="Email" maxlength="256" type="email" data-bind="value: email" />
+						<span class="help-block ui-priority-secondary"></span>
+			    	</div>
+			    </div>
+
+			    <div class="control-group">
+					<label class="control-label" for="website">Site internet</label>
+						<div class="controls">
+					<input class="span10" name="website" placeholder="Adresse du site internet" maxlength="256" type="text" data-bind="value: website" />
+					<span class="help-block ui-priority-secondary">Au format suivant: http://www.exemple.com</span>
+			    </div>
+			    </div>
+			    
+			    <div class="control-group">
+					<label class="control-label" for="displayInMembersList">Afficher ce membre</label>
+					<div class="controls">
+						<label class="checkbox">
+							<input name="displayInMembersList" type="checkbox" data-bind="checked: displayInMembersList" />
+							<span class="help-block ui-priority-secondary">Détermine s'il faut afficher ce membre sur la page "Découvrez nos adhérents" visible au public.</span>
+						</label>
+			    	</div>
+			    </div>			    
+						
+				</fieldset>
+
+			  <fieldset>
+			    <legend class="ui-helper-hidden">Contact</legend>
+						
+			    <div class="control-group">
+					<label class="control-label" for="contactName">Nom du contact</label>
+					<div class="controls">
+						<select class="span1" name="contactGenre" data-bind="options: $root.members.genres, optionsText: 'text', optionsValue: 'value', value: contactGenre">
+							</select>
+						<input class="span9" name="contactName" placeholder="Nom du contact" required="required" maxlength="256" type="text" data-bind="value: contactName" />
+						<span class="help-block ui-priority-secondary"></span>
+			    	</div>
+			    </div>
+
+			    <div class="control-group">
+					<label class="control-label" for="contactTitle">Statut du contact</label>
+						<div class="controls">
+					<input class="span10" name="contactTitle" placeholder="Statut du contact" maxlength="256" type="text" data-bind="value: contactTitle"/>
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+
+			    <div class="control-group">
+					<label class="control-label" for="contactEmail">Email du contact</label>
+					<div class="controls">
+						<input class="span10" name="contactEmail" placeholder="Email du contact" maxlength="256" type="email" data-bind="value: contactEmail" />
+						<span class="help-block ui-priority-secondary"></span>
+			    	</div>
+			    </div>
+
+			    <div class="control-group">
+					<label class="control-label" for="contactPhone">Téléphone fixe</label>
+						<div class="controls">
+					<input class="span10" name="contactPhone" placeholder="Téléphone fixe" maxlength="256" type="text" data-bind="value: contactPhone" />
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+
+			    <div class="control-group">
+					<label class="control-label" for="contactMobile">Téléphone portable</label>
+						<div class="controls">
+					<input class="span10" name="contactMobile" placeholder="Téléphone portable" maxlength="256" type="text" data-bind="value: contactMobile" />
+					<span class="help-block ui-priority-secondary"></span>
+			    </div>
+			    </div>
+
+			</fieldset>
+					
+			<fieldset>
+			    <legend class="ui-helper-hidden">Informations d'Adhésion</legend>
+
+			    <div class="control-group">
+			      <label class="control-label" for="subscribingDate">Date d'adhésion</label>
+					<div class="controls">
+				      <input class="span6" name="subscribingDate" maxlength="10" type="text" data-bind="value: subscribingDate.formatted, jqDatePicker: {}" />
+				      <span class="help-block ui-priority-secondary"></span>
+				    </div>
+			    </div>
+
+			  </fieldset>
+
+			</form>
+		</div>
+	</div>
+</div>

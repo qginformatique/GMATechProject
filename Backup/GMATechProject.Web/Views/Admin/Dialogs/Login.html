@@ -1,0 +1,29 @@
+<div id="dialogLogin" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<form action="/admin/authentication" type="post">
+		<div class="modal-header">
+		    <h3 id="myModalLabel">Veuillez vous identifier</h3>
+		</div>
+	  	<div class="modal-body">				
+			<fieldset>
+				<div class="login-alerts"></div>
+				
+				<div class="control-group">
+					<label class="control-label" for="email">Email</label>
+					<div class="controls">
+						<input class="input-xxlarge" name="email" required="required" maxlength="256" type="email" />
+		            </div>				
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="password">Mot de passe</label>
+					<div class="controls">
+						<input class="input-xxlarge" name="password" required="required" maxlength="256" type="password" />
+		            </div>				
+				</div>
+			</fieldset>
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary">S'authentifier</button>
+		</div>
+	</form>
+</div>

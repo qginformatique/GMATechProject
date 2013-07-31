@@ -1,0 +1,46 @@
+﻿<div id="content-header">
+	<h1 data-bind="visible: security.isAdding">Nouvel utilisateur</h1>
+	<h1 data-bind="invisible: security.isAdding">Modification de l'utilisateur</h1>
+</div>
+
+<div class="breadcrumb">
+	<a href="#" navigation-section="Home" class="tip-bottom" data-original-title="Retourner à l'accueil"><i class="icon-home"></i> Accueil</a>
+	<a href="#" navigation-section="Security">Utilisateurs</a>
+	<a href="#" class="current">
+		<span data-bind="visible: security.isAdding">Nouvel utilisateur</span>
+		<span data-bind="invisible: security.isAdding">Modification de l'utilisateur</span>
+	</a>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<form id="identity-form-edition" name="identity-form" class="form-horizontal" data-bind="visible: security.editedIdentity">
+			<!-- ko with: security.editedIdentity -->	
+			<input type="hidden" name="id" data-bind="value: id" />
+			<fieldset>		
+				<div class="control-group">
+					<label class="control-label" for="email">Email</label>
+					<div class="controls">
+						<input class="input-xlarge" name="email" placeholder="Email de l'utilisateur" required="required" maxlength="256" type="email" data-bind="value: email" />
+		              	<p class="help-block ui-priority-secondary">L'email est également l'identifiant de l'utilisateur pour la connection au site.</p>
+		              	<p class="help-block ui-priority-secondary warning">Si vous changez l'email de l'utilisateur, celui-ci ne pourra se connecter qu'en utilisant ce nouvel email.</p>
+		            </div>				
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label" for="roles">Role</label>
+					<div class="controls">
+						<select class="input-xlarge" name="role" data-bind="options: $root.security.availableRoles, optionsText: 'text', optionsValue: 'value', value: role">
+						</select>
+					</div>
+				</div>
+			
+				<div class="form-actions">
+		            <button type="submit" class="btn btn-primary">Enregistrer</button>
+		            <button class="btn identity-cancel" value="cancel">Annuler</button>
+				</div>			
+			</fieldset>
+			<!-- /ko -->	
+		</form>
+	</div>
+</div>

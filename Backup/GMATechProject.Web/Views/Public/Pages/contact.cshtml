@@ -1,0 +1,189 @@
+﻿@{ 
+	Layout = "Public.cshtml";
+	Model.HtmlTitle = "Contactez-nous";
+}
+
+<div class="page-content">
+
+	<h1 class="title">Nous contacter</h1>
+	
+	<div style="min-height: 300px;">
+		<div id="contact_gmap"></div>
+		<div style="float: right; text-align: center; width: 260px;">
+			<img src="/Resources/images/logo-fibresud.jpg" style="border: none; margin: 0;" />
+			<br/>Parc d'activités
+			<br/>La Tour d'Aigues
+			<br/>84120 La Bastidonne
+			<br/>
+			<br/><span style="color: #dac6b1; font-size: 1.2em; font-weight: bold;">Tél : 04.26.78.18.50</span>
+			<br/>Fax : 04.26.78.18.59
+		</div>
+	</div>
+	
+	<h3 style="background: #8fb716;">POUR NOUS CONTACTER PAR MAIL, MERCI DE REMPLIR LE FORMULAIRE CI-DESSOUS</h3>
+	
+	<form id="contactForm" action="/contact" type="post" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label" for="name">Nom, Prénom*</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-user"></i></span>
+					<input class="input-xlarge" name="name" placeholder="Nom, Prénom" required="required" maxlength="256" type="text" />
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="email">Adresse email*</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-envelope"></i></span>
+					<input class="input-xlarge" name="email" placeholder="Adresse email" required="required" maxlength="256" type="email" />
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="phone">Téléphone*</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-phone"></i></span>
+					<input class="input-xlarge" name="phone" placeholder="Téléphone" required="required" maxlength="256" type="text" />
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="subject">Sujet*</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-question-sign"></i></span>
+					<select class="input-xlarge" name="subject" placeholder="Sujet" required="required" maxlength="256" type="text">
+						<option>Projet</option>
+						<option>Demande de renseignement</option>
+						<option>Demande d’adhésion</option>
+						<option>Inscription événement</option>
+						<option>Autre</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="message">Message*</label>
+			<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on"><i class="icon-pencil"></i></span>
+					<textarea class="input-xlarge" rows="8" name="message" placeholder="Message" required="required" maxlength="5120" type="text"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="control-group">
+			<div class="controls" id="contactFormCaptcha">
+		    </div>
+		</div>
+		<div class="control-group">
+			<div class="controls" style="text-align: right; margin-right: 140px;">
+				<button type="submit" class="btn contactFormSubmit">Envoyer</button>
+		    </div>
+		</div>
+	</form>
+	
+	<div id="dialogContactForm" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  		<div class="modal-header">
+  			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		    <h3 id="myModalLabel" style="background: #8fb716;">Envoi d'un message</h3>
+		</div>
+	  	<div class="modal-body">
+			<fieldset>
+				<p id="dialogContactFormMessage"></p>
+			</fieldset>
+		</div>
+		<div class="modal-footer">
+		    <button class="btn" data-dismiss="modal" aria-hidden="true">OK</button>
+		  </div>
+	</div>
+	
+</div>
+
+@section Footer {
+
+	// Intialise ReCaptcha
+   	Recaptcha.create(
+   		"6LcpRNsSAAAAAP4ylWEEnxl-hsOXZD-Asq0MUltG", 
+   		"contactFormCaptcha", 
+   		{ theme: "white" }
+	);
+	
+    // Manage Contact Form        
+	$("#contactForm").validate({
+		rules: {
+			name: { required: true, maxlength: 256 },
+			email: { required: true, email: true, maxlength: 256 },
+			phone: { required: true, maxlength: 256 },
+			subject: { required: true, maxlength: 256 },
+			message: { required: true, maxlength: 5120 }@*,
+			recaptcha_response_field: { required: true }*@
+		},
+		// Function called when the form is submited AND valid
+        submitHandler: function (form) {
+        	$(".contactFormSubmit").addClass("disabled");
+            $(form).ajaxSubmit({
+        		type: 'POST',
+        		data: { 
+				  	reCaptchaChallenge: $("#recaptcha_challenge_field").val(),
+				  	reCaptchaResponse: $("#recaptcha_response_field").val()
+				  	},
+            	success: function(response){
+        			if(response.success)
+        			{
+        				$("#dialogContactFormMessage").text("Votre mail a été envoyé. Nous vous recontacterons dans les meilleurs délais.");
+	        			$("#dialogContactForm").modal();
+	        			$(".contactFormSubmit").removeClass("disabled");
+        			}
+        			else
+        			{
+        				$("#dialogContactFormMessage").text("Captcha incorrect! Merci de vérifier votre saisie ou de générer un nouveau Captcha.");
+	        			$("#dialogContactForm").modal();
+        			}
+             	}
+            });
+            
+            return false;
+        }
+    });
+
+	// Google Map initialisation
+	$("#contact_gmap").gMap(
+	{
+	 latitude: 43.701885,
+	 longitude: 5.566120,
+	 maptype: "ROADMAP",
+	 markers: [
+		{
+	        latitude: 43.70188510069,
+	        longitude: 5.5661201477050
+	    },
+	    {
+	        address: "AB&C",
+	        html: "AB&C<br/>PRIDES Bois&Construction<br/>Parc d'activités<br/>La Tour d'Aigues<br/>84120 La Bastidonne<br/><br/>Tél: 04.26.78.18.50",
+	        icon: {
+	            image: "/Resources/images/google-map-picto-fibresud.png",
+	            iconsize: [60, 58],
+	            iconanchor: [15,40]
+	        }
+	    }
+	],
+	icon: {
+	    image: "/Resources/images/google-map-picto-fibresud.png",
+	    iconsize: [60, 58],
+	    iconanchor: [15, 40]
+	},
+	 zoom: 9,
+	 scrollwheel: true,
+	 controls: {
+	     panControl: true,
+	     zoomControl: false,
+	     mapTypeControl: true,
+	     scaleControl: true,
+	     streetViewControl: false,
+	     overviewMapControl: true
+	     }
+	});
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+	<title>FIBRESUD, Pôle Méditerranéen de la Forêt et du Bois</title>
+	<link>http://www.fibresud.org</link>
+	<description>Actualités de FIBRESUD - Pôle Méditerranéen de la Forêt et du Bois</description>
+	
+	@foreach(var item in Model.Items) {
+	<item>
+		<title>@item.Title</title>
+		<link>@item.Link</link>
+    	<guid>@item.RSSGuid</guid>
+    	<pubDate>@item.PublicationDate</pubDate>
+    	<description><![CDATA[@item.Description]]></description>
+    	if(!string.IsNullOrEmpty(item.ImageUrl)) { <text><enclosure url="@item.ImageUrl" type="image/jpeg"></enclosure></text> }
+	</item>
+	}
+</channel>
+</rss>

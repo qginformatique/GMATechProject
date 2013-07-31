@@ -1,0 +1,76 @@
+﻿<div id="content-header">
+	<h1 data-bind="visible: progress.isAdding">Nouvelle étape de progression</h1>
+	<h1 data-bind="invisible: progress.isAdding">Modification de l'étape de progression</h1>
+</div>
+
+<div class="breadcrumb">
+	<a href="#" navigation-section="Home" class="tip-bottom" data-original-title="Retourner à l'accueil"><i class="icon-home"></i> Accueil</a>
+	<a href="#" navigation-section="Progress">Progression</a>
+	<a href="#" class="current">
+		<span data-bind="visible: progress.isAdding">Nouvelle étape de progression</span>
+		<span data-bind="invisible: progress.isAdding">Modification de l'étape de progression</span>
+	</a>
+</div>
+
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<form id="progress-form-edition" name="progress-form" class="form-edition form-horizontal" data-bind="with: progress.editedItem">
+				<input type="hidden" name="id" data-bind="value: id" />
+				<fieldset>
+				    <legend class="ui-helper-hidden">Titre, Catégorie, Description & Tags</legend>
+
+				    <div class="control-group">
+				      <label class="control-label" for="title">Titre*</label>
+						<div class="controls">
+						  <input class="span10" name="title" placeholder="Titre de l'étape de progression" required="required" maxlength="256" type="text" data-bind="value: title" />
+						</div>
+				    </div>
+					
+					<div class="control-group alternate">
+				      <label class="control-label" for="description">Description*</label>
+						<div class="controls">
+						  <input class="span10" name="description" placeholder="Description de l'étape de progression" required="required" maxlength="512" type="text" data-bind="value: description" />
+						</div>
+				    </div>
+				    
+				    <div class="control-group alternate">
+				      <label class="control-label" for="currentProgress">Progression actuelle*</label>
+						<div class="controls">
+						  <input class="span10" name="currentProgress" placeholder="Progression actuelle" required="required" maxlength="3" type="number" data-bind="value: currentProgress" />
+						  <span class="help-block ui-priority-secondary">Entier compris entre 0 et 100 correspondant au pourcentage de réalisation de cette étape.</span>
+						</div>
+				    </div>
+				    
+				    <div class="control-group">
+						<label class="control-label" for="notes">Notes</label>
+						<div class="controls">
+					      <textarea class="span10" name="notes" placeholder="Notes" maxlength="1024" type="text" data-bind="value: notes"></textarea>
+					      <span class="help-block ui-priority-secondary">Informations complémentaires.</span>
+						</div>
+					</div>
+					
+				    <div class="control-group alternate">
+				      <label class="control-label" for="tags">Tags</label>
+						<div class="controls">
+							<input type="text" name="tags" class="span10 tags" data-bind="jqTags: { tags: tags }">
+					      	<span class="help-block ui-priority-secondary">Entrez vos mot clé en les validant avec <b>Entrée</b>.</span>
+						</div>
+				    </div>
+			</fieldset>
+			    
+			<fieldset>
+				    <legend class="ui-helper-hidden">SEO</legend>
+				    
+				    <div class="control-group">
+					<label class="control-label" for="seotitle">URL Simplifiée</label>
+					<div class="controls">
+						<input class="span10 input-xlarge notPlaceholder" name="friendlyUrl" placeholder="URL simplifiée (exemple: titre-de-l-evenement)" maxlength="256" type="text" data-bind="value: friendlyUrl"/>
+					</div>
+				</div>
+			</fieldset>  
+			
+			</form>
+		</div>
+	</div>
+</div>

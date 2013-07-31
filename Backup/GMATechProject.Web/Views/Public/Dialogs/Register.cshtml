@@ -1,0 +1,29 @@
+<div id="dialogRegister" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	<form action="/authentication/register" type="post" data-bind="with: identity">
+		<div class="modal-header">
+		    <h3 id="myModalLabel">Choisissez votre mot de passe</h3>
+		</div>
+	  	<div class="modal-body">
+				<input type="hidden" name="id" data-bind="value:id" />
+				
+				<fieldset>		
+					<div class="control-group">
+						<label class="control-label" for="password">Mot de passe</label>
+						<div class="controls">
+							<input class="input-xlarge" name="password" required="required" maxlength="256" type="password" />
+			            </div>				
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="email">Confirmation du mot de passe</label>
+						<div class="controls">
+							<input class="input-xlarge" name="confirmpassword" required="required" maxlength="256" type="password" />
+			            </div>				
+					</div>
+				</fieldset>
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary">Enregistrer</button>
+		</div>
+	</form>
+</div>

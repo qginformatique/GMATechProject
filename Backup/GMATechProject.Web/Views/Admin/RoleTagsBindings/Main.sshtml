@@ -1,0 +1,3 @@
+﻿<div data-bind="invisible: roleTags.isEditing">
+  @Partial['Admin/RoleTagsBindings/List.html'];
+</div>
